@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <title>Jogo da Memória</title>
+        
+        <style>
+        body{
+            font-family: Arial;
+        }
+        main{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .game{
+            display: flex;
+            width: 40%;
+            flex-wrap: wrap;
+        }
+        .none{
+            display: none;
+        }
+        
+        .card{
+            background-color: blue;
+            width: 100pt;
+            height: 100pt;
+            margin: 10pt;
+            border-radius: 10pt;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 40pt;
+            cursor: pointer;
+        }
+        .correto{
+            display: flex !important;
+        }
+        button{
+            padding: 10pt;
+            border: none;
+            border-radius: 10pt;
+            background-color: blue;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
+        
+    </head>
+    
+    <body onload='Embaralhar()'>
+        
+        <button onclick="window.location.reload(true)" class="botao">Embaralhar</button>
+        
+        <h4>Jogadas: <a id="countJogadas">0</a></h4>
+        
+        <main>
+            <div class="game">
+                <div onclick="SelectCard(this.id)" id="peca0" class="card"><div id="peca0value" class="none">1</div></div>
+                <div onclick="SelectCard(this.id)" id="peca1" class="card"><div id="peca1value" class="none">2</div></div>
+                <div onclick="SelectCard(this.id)" id="peca2" class="card"><div id="peca2value" class="none">3</div></div>
+                <div onclick="SelectCard(this.id)" id="peca3" class="card"><div id="peca3value" class="none">4</div></div>
+                <div onclick="SelectCard(this.id)" id="peca4" class="card"><div id="peca4value" class="none">5</div></div>
+                <div onclick="SelectCard(this.id)" id="peca5" class="card"><div id="peca5value" class="none">6</div></div>
+                <div onclick="SelectCard(this.id)" id="peca6" class="card"><div id="peca6value" class="none">1</div></div>
+                <div onclick="SelectCard(this.id)" id="peca7" class="card"><div id="peca7value" class="none">2</div></div>
+                <div onclick="SelectCard(this.id)" id="peca8" class="card"><div id="peca8value" class="none">3</div></div>
+                <div onclick="SelectCard(this.id)" id="peca9" class="card"><div id="peca9value" class="none">4</div></div>
+                <div onclick="SelectCard(this.id)" id="peca10" class="card"><div id="peca10value" class="none">5</div></div>
+                <div onclick="SelectCard(this.id)" id="peca11" class="card"><div id="peca11value" class="none">6</div></div>
+            </div>
+        </main>
+        
+        <script>
+            
+        var countJogadas = 1;
+        
+        var i = 0
+
+        var peca1 = 0;
+        var peca2 = 0;
+        
+        var classPeca1 = 0;
+        var classPeca2 = 0;
+        
+        var card1 = 0;
+        var card2 = 0;
+
+        var cartas = [1,2,3,4,5,6,1,2,3,4,5,6]
+
+        function Embaralhar(){
+            
+            for (ii = 0; ii < cartas.length; ii++) {
+              var carta = document.getElementById('peca'+ii+'value');
+              carta.classList = 'none';
+            } 
+            
+            //   set the index to the arrays length
+              let i = cartas.length, j, temp;
+            //   create a loop that subtracts everytime it iterates through
+              while (--i > 0) {
+            //  create a random number and store it in a variable
+              j = Math.floor(Math.random () * (i+1));
+            // create a temporary position from the item of the random number    
+              temp = cartas[j];
+            // swap the temp with the position of the last item in the array    
+              cartas[j] = cartas[i];
+            // swap the last item with the position of the random number 
+              cartas[i] = temp;
+              }
+        
+        for (i = 0; i < cartas.length; i++) {
+          var carta = document.getElementById('peca'+i+'value');
+          carta.innerHTML = cartas[i];
+        }
+        
+        }
+
+        function SelectCard(card){
+            
+            var jogadas = document.getElementById('countJogadas')
+            jogadas.innerHTML = countJogadas
+
+            if(i==0){
+                var classPeca = document.getElementById(card + 'value').classList;
+                var valuePeca = document.getElementById(card + 'value').innerText;
+                
+                card1 = card
+
+                classPeca.toggle('none');
+
+                var classPeca1 = classPeca;
+                peca1 = valuePeca;
+                
+                i++
+
+            }else if(i==1){
+                var classPeca = document.getElementById(card + 'value').classList;
+                var valuePeca = document.getElementById(card + 'value').innerText;
+                
+                card2 = card
+
+                classPeca.toggle('none');
+
+                var classPeca2 = classPeca;
+                peca2 = valuePeca;
+                
+                i++
+
+                
+            }else if(i==2){
+                if(peca1 != peca2){
+                    var classPeca1 = document.getElementById(card1 + 'value').classList
+                    var classPeca2 = document.getElementById(card2 + 'value').classList
+                    card1=0
+                    card2=0
+                    classPeca1.toggle('none');
+                    classPeca2.toggle('none');
+                    i=0
+                    countJogadas++
+                }else{
+                    var classPeca1 = document.getElementById(card1 + 'value').classList
+                    var classPeca2 = document.getElementById(card2 + 'value').classList
+                    card1=0
+                    card2=0
+                    classPeca1.toggle('correto');
+                    classPeca2.toggle('correto');
+                    i=0
+                    countJogadas++
+                }
+            }
+            
+            
+        }
+        </script>
+        
+    </body>
+    
+</html>
