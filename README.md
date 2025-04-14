@@ -23,7 +23,7 @@ O objetivo do jogo é encontrar todos os pares de cartas iguais com o menor núm
 
 Todo o código está no arquivo `index.html`. Você pode abrir direto no navegador.
 
-Você também pode [clicar aqui]() e ver o projeto funcionando online.
+Você também pode [clicar aqui](https://airon-aona.github.io/memory-game/) e ver o projeto funcionando online.
 
 
 ## 🔧 Funcionalidades
