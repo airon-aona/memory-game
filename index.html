@@ -25,15 +25,17 @@
         .card{
             background-color: blue;
             width: 100pt;
-            height: 100pt;
+            height: 150pt;
             margin: 10pt;
             border-radius: 10pt;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
+            color: gold;
             font-size: 40pt;
             cursor: pointer;
+            box-shadow: rgba(0, 0, 0, 0.548) 5pt 5pt 10pt;
+            border: 5pt solid gold;
         }
         .correto{
             display: flex !important;
@@ -49,6 +51,8 @@
         }
     </style>
         
+        <script src="https://kit.fontawesome.com/60ba843c3b.js" crossorigin="anonymous"></script>
+
     </head>
     
     <body onload='Embaralhar()'>
@@ -89,7 +93,19 @@
         var card1 = 0;
         var card2 = 0;
 
-        var cartas = [1,2,3,4,5,6,1,2,3,4,5,6]
+        var cartas = [
+            '<i class="fa-solid fa-mug-hot"></i>',
+            '<i class="fa-solid fa-ghost"></i>',
+            '<i class="fa-solid fa-truck"></i>',
+            '<i class="fa-solid fa-bomb"></i>',
+            '<i class="fa-solid fa-fire"></i>',
+            '<i class="fa-solid fa-key"></i>',
+            '<i class="fa-solid fa-mug-hot"></i>',
+            '<i class="fa-solid fa-ghost"></i>',
+            '<i class="fa-solid fa-truck"></i>',
+            '<i class="fa-solid fa-bomb"></i>',
+            '<i class="fa-solid fa-fire"></i>',
+            '<i class="fa-solid fa-key"></i>']
 
         function Embaralhar(){
             
@@ -126,7 +142,7 @@
 
             if(i==0){
                 var classPeca = document.getElementById(card + 'value').classList;
-                var valuePeca = document.getElementById(card + 'value').innerText;
+                var valuePeca = document.getElementById(card + 'value').innerHTML;
                 
                 card1 = card
 
@@ -139,7 +155,7 @@
 
             }else if(i==1){
                 var classPeca = document.getElementById(card + 'value').classList;
-                var valuePeca = document.getElementById(card + 'value').innerText;
+                var valuePeca = document.getElementById(card + 'value').innerHTML;
                 
                 card2 = card
 
@@ -147,7 +163,7 @@
 
                 var classPeca2 = classPeca;
                 peca2 = valuePeca;
-                
+
                 i++
 
                 

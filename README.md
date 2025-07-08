@@ -36,7 +36,7 @@ Você também pode [clicar aqui](https://airon-aona.github.io/memory-game/) e ve
 ## 🚀 Melhorias Futuras
 
 - [ ] Adicionar sons ao virar e acertar cartas
-- [ ] Substituir números por imagens ou emojis
+- [X] Substituir números por imagens ou emojis
 - [ ] Criar sistema de pontuação
 - [ ] Adicionar cronômetro
 - [ ] Níveis de dificuldade
