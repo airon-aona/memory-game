@@ -7,35 +7,38 @@
         <style>
         body{
             font-family: Arial;
+            margin: 0;
         }
         main{
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
         }
         .game{
             display: flex;
-            width: 40%;
+            width: 50%;
             flex-wrap: wrap;
+            justify-content: space-around;
         }
         .none{
-            display: none;
+            display: none !important;
         }
         
         .card{
-            background-color: blue;
+            background-color: #0000ff;
             width: 100pt;
+            margin: 10pt 0;
             height: 150pt;
-            margin: 10pt;
             border-radius: 10pt;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: gold;
+            color: #ffd700;
             font-size: 40pt;
             cursor: pointer;
             box-shadow: rgba(0, 0, 0, 0.548) 5pt 5pt 10pt;
-            border: 5pt solid gold;
+            border: 5pt solid #ffd700
         }
         .correto{
             display: flex !important;
@@ -44,10 +47,52 @@
             padding: 10pt;
             border: none;
             border-radius: 10pt;
-            background-color: blue;
-            color: white;
+            background-color: #0000ff;
+            color: #fff;
             font-weight: bold;
             cursor: pointer;
+        }
+
+        .painel{
+            position: absolute;
+            left: 10pt;
+            top: 10pt;
+        }
+
+        #modal{
+            margin: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.582);
+        }
+
+        #modalwin{
+            display: flex;
+            margin-top: -150pt;
+            flex-direction: column;
+            align-items: center;
+            background-color: #0000ff;
+            color: #fff;
+            border: 5pt solid #ffd700;
+            padding: 20pt 60pt;
+        }
+
+        #timer{
+            background-color: #0000ff;
+            border: 5pt solid #ffd700;
+            border-radius: 10pt;
+            padding: 0 25pt;
+            color: #fff;
+            margin: 15pt 0;
+        }
+
+        #timer h1{
+            background-color: black;
+            padding: 10pt;
         }
     </style>
         
@@ -57,11 +102,29 @@
     
     <body onload='Embaralhar()'>
         
-        <button onclick="window.location.reload(true)" class="botao">Embaralhar</button>
-        
-        <h4>Jogadas: <a id="countJogadas">0</a></h4>
+        <div id="modal" class="none">
+            <div id="modalwin">
+                <h1>Você Ganhou!</h1>
+                <h2>Jogadas Totais: <a id="jogadasTotais">0</a></h2>
+                <!--h2>Tempo de Jogo: <a>00:00:00</a></h2-->
+            </div>
+        </div>
+
+        <div class="painel">
+            <button onclick="window.location.reload(true)" class="botao">Embaralhar</button>
+            
+            <h4>Jogadas: <a id="countJogadas">0</a></h4>
+            <h4>Acertos: <a id="countAcertos">0</a></h4>
+        </div>
+
+        </div>
         
         <main>
+
+            <div id="timer">
+                <h1>00:00:00</h1>
+            </div>
+
             <div class="game">
                 <div onclick="SelectCard(this.id)" id="peca0" class="card"><div id="peca0value" class="none">1</div></div>
                 <div onclick="SelectCard(this.id)" id="peca1" class="card"><div id="peca1value" class="none">2</div></div>
@@ -79,6 +142,8 @@
         </main>
         
         <script>
+
+        var countAcertos = 0;
             
         var countJogadas = 1;
         
@@ -184,8 +249,23 @@
                     card2=0
                     classPeca1.toggle('correto');
                     classPeca2.toggle('correto');
+
+                    countAcertos ++;
+                    var acertos = document.getElementById('countAcertos');
+                    acertos.innerHTML = countAcertos;
+
                     i=0
                     countJogadas++
+
+                    if(countAcertos > 5){
+
+                        var classModal = document.getElementById('modal').classList;
+                        classModal.toggle('none');
+
+                        var jogadasTotais = document.getElementById('jogadasTotais');
+                        jogadasTotais.innerText = countJogadas-1;
+                    }
+
                 }
             }
             
