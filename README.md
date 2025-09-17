@@ -33,7 +33,7 @@ Você também pode [clicar aqui](https://airon-aona.github.io/memory-game/) e ve
 - Cartas com números (pode ser adaptado para imagens)
 - Interface simples e intuitiva
 
-## 🚀 Melhorias Futuras
+## 🚀 Melhorias
 
 - [ ] Adicionar sons ao virar e acertar cartas
 - [X] Substituir números por imagens ou emojis
